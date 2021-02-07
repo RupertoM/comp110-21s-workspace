@@ -13,7 +13,7 @@ from random import randint
 
 # Begin your solution here...
 
-random_number = randint(0,100)
+random_number = randint(0, 100)
 
 print("Your fortune cookie says...")
 
@@ -32,4 +32,3 @@ else:
         print("You will have the most amazing life in the universe!")
 
 print("Now, go spread positive vibes!")
-    

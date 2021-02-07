@@ -21,16 +21,12 @@ from datetime import timedelta
 population = int(input("Enter the total number of people under consideration:"))
 doses_adminestered = int(input("Enter the total number of vaccine doses already given to the population:"))
 doses_per_day = int(input("Enter the total number of vaccine doses given each calendar day:"))
-percent_vaccinated = int(input("Enter what percent of the population you wish to know will be vaccinated:"))
+perc_vac = int(input("Enter what percent of the population you wish to know will be vaccinated:"))
 
-amount_to_vaccinate = (percent_vaccinated)/100 * (population)
-#print(amount_to_vaccinate)
-people_vaccinated = (doses_adminestered)/2
-#print(people_vaccinated)
-people_vaccinated_per_day = (doses_per_day)/2
-#print(people_vaccinated_per_day)
+amount_to_vaccinate = (perc_vac / 100) * (population)
+people_vaccinated = (doses_adminestered) / 2
+people_vaccinated_per_day = (doses_per_day) / 2
 people_left = amount_to_vaccinate - (people_vaccinated)
-#print(people_left)
 days_left = round(people_left / people_vaccinated_per_day)
 
 today: datetime = datetime.today()
@@ -40,5 +36,5 @@ future: datetime = (today + fortnight)
 
 future_date = future.strftime("%B %d, %Y")
 
-print("We will reach " + str(percent_vaccinated) + "% vaccination in " + str(days_left) + " days, which falls on ", end="")
+print("We will reach " + str(perc_vac) + "% vaccination in " + str(days_left) + " days, which falls on ", end="")
 print(future_date)
