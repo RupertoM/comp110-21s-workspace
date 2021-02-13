@@ -15,9 +15,7 @@ def main() -> None:
 
 # TODO 1: Define your fortune_cookie function here.
 def fortune_cookie() -> str:
-
-    from random import randint
-
+    """Fortune Cookie Spitting Function."""
     random_number = randint(0, 100)
 
     if random_number <= 50:

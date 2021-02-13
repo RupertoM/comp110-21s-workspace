@@ -12,19 +12,19 @@ def main() -> None:
 
 # TODO 1: Define the tar_heels function, and its logic, here.
 def tar_heels(x: int) -> str:
-
+    """Tar Heels Function."""
     if x % 2 == 0 and x % 7 == 0:
         return("TAR HEELS")
 
-    else:
-        if x % 2 == 0:
-            return("TAR")
+    if x % 2 == 0:
+        return("TAR")
         
-        if x % 7 == 0:
-            return("HEELS")
+    if x % 7 == 0:
+        return("HEELS")
 
     if x % 2 != 0 and x % 7 != 0:
         return("CAROLINA")
+
 
 if __name__ == "__main__":
     main()
