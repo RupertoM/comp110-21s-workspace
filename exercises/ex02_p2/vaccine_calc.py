@@ -20,9 +20,8 @@ def main() -> None:
 
 
 # TODO 1: Define days_to_target function
-def days_to_target(population: int, doses: int, doses_per_day: int, target:int) -> int:
+def days_to_target(population: int, doses: int, doses_per_day: int, target: int) -> int:
     """Function to find number of days until target percent of population is vaccinated."""
-
     amount_to_vaccinate = (target / 100) * (population)
     people_vaccinated = (doses) / 2
     people_vaccinated_per_day = (doses_per_day) / 2
@@ -44,6 +43,7 @@ def future_date(days: int) -> str:
     future_date = future.strftime("%B %d, %Y")
 
     return future_date
+    
 
 if __name__ == "__main__":
     main()
