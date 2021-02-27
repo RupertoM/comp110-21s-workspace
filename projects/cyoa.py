@@ -4,8 +4,9 @@ __author__ = "730408061"
 
 from random import randint
 
-player = ""
-points = 0
+player: str
+points: int 
+
 
 def main() -> None:
     """The entrypoint for user interaction with the program."""
@@ -14,17 +15,28 @@ def main() -> None:
     greet()
     games()
 
+
 def greet() -> None:
     """The greeting function that will ask the user for an input."""
+    print("Welcome to the COMP 110 programming game.")
 
     global player
+    player = input("What is your name? - ")
 
-    player = input("Welcome to the COMP 110 programming game. What is your name? - ")
 
 def games() -> None:
-    """The function that will allow the user to choose an adventure path. (Continously looped with 3 options.)"""
+    """The function that will allow the user to choose an adventure path. *Continously looped with 3 options."""
+    option = int(input(f"""
 
-    option = int(input(f"You now have {points} point(s). \nPlease select one of the following using the integer provided before each option. \n1- Dice rolling game.\U0001F3B2 \n2- Color guessing game.\U0001F3A8 \n3- Coinflip game.\U0001F4B8 \n4- End gaming experience.\U00002705 \nAnswer: "))
+    You now have {points} point(s).
+
+Please select one of the following using the integer provided before each option.
+1- Dice rolling game.\U0001F3B2
+2- Color guessing game.\U0001F3A8
+3- Coinflip game.\U0001F4B8
+4- End gaming experience.\U00002705
+
+Answer: """))
 
     if option == 1:
         dice()
@@ -36,14 +48,21 @@ def games() -> None:
         coinflip()
     
     if option == 4:
-        print(f"Thank you so much for playing! You earned {points} point(s)!! Congratulations, have a great day {player}!")
+        print(f"Thank you for playing! You earned {points} point(s)!! Congratulations! Have a great day {player}!")
+
 
 def dice() -> None:
     """The function for the dice rolling game option."""
+    dice_roll = randint(1, 6)
 
-    dice_roll = randint(1,6)
+    global points
 
-    ready = input("Welcome to the dice rolling game. If you guess correctly on your first try you will win 10 points. If you guess correctly within the first 3 tries you will gain 5 points. If you fail to guess correctly within 3 tries you will not gain any points. Want to play? Y/N: ")
+    ready = input("""
+Welcome to the dice rolling game. 
+If you guess correctly on your first try you will win 10 points.
+If you guess correctly within the first 3 tries you will gain 5 points.
+If you fail to guess correctly within 3 tries you will not gain any points.
+Do you want to play? Y/N: """)
 
     if ready == "Y":
         dice_count = 1
@@ -52,7 +71,6 @@ def dice() -> None:
             dice_count += 1
 
         if dice_count == 1:
-            global points
             points += 10
             games()
 
@@ -61,26 +79,32 @@ def dice() -> None:
             games()
 
         if dice_count > 3:
-           games()
+            games()
 
     else:
         games()
 
+
 def colorguess() -> None:
     """The function for the number guessing game option."""
-
-    offset = randint(0,3)
-    color_list = ["Black", "Red", "Tarheel Blue", "White"]
+    global points
+    offset = randint(0, 3)
+    color_list = ["Black", "Red", "Blue", "White"]
     color = color_list[offset]
-    ready = input("Welcome to the color guessing game. If you guess correctly on your first try you will win 10 points. If you guess correctly within the first 2 tries you will gain 5 points. If you fail to guess correctly within 2 tries you will not gain any points. Want to play? Y/N: ")
+
+    ready = input("""
+Welcome to the color guessing game.
+If you guess correctly on your first try you will win 10 points.
+If you guess correctly within the first 2 tries you will gain 5 points.
+If you fail to guess correctly within 2 tries you will not gain any points.
+Do you want to play? Y/N: """)
 
     if ready == "Y":
         color_count = 1
-        while input("Pick a color: Tarheel Blue, White, Red, or Black. If you guessed incorrectly try again. ") != color:
+        while input("Pick a color: Blue, White, Red, or Black. If you guessed incorrectly try again. ") != color:
             color_count += 1
 
         if color_count == 1:
-            global points
             points += 10
             games()
 
@@ -91,21 +115,24 @@ def colorguess() -> None:
         if color_count > 2:
             games() 
 
-
     else:
         games() 
 
+
 def coinflip() -> None:
     """The function for coin flip game option."""
+    ready = input("""
+Welcome to the coin flipping game.
+For every time you correctly guess the coin flip you will earn 1 point.
+Do you want to play? Y/N: """)
 
-    ready = input("Welcome to the coin flipping game. For every time you correctly guess the coin flip you will earn 1 point. Want to play? Y/N: ")
+    global points
 
     if ready == "Y":
         
         heads_or_tails = ["Heads", "Tails"]
 
-        while (input("Pick Heads or Tails: ")) == heads_or_tails[randint(0,1)]:
-            global points
+        while (input("Pick Heads or Tails: ")) == heads_or_tails[randint(0, 1)]:
             points += 1
         
         games()
@@ -115,4 +142,4 @@ def coinflip() -> None:
 
 
 if __name__ == "__main__":
-  main()
+    main()
